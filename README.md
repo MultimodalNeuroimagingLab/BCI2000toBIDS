@@ -2,6 +2,7 @@
 This repository contains code and documentation to help convert BCI2000 data to BIDS.
 
 **Welcome to the BCI2000 to BIDS repository**
+
 We are working on developing code to read BCI2000 data and then write a folder containing a BIDS-compatible dataset.
 
 # BCI 20000

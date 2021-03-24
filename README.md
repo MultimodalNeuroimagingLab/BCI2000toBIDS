@@ -6,10 +6,10 @@ This repository contains code and documentation to help convert BCI2000 data to 
 We are working on developing code to read BCI2000 data and then write a folder containing a BIDS-compatible dataset.
 
 # BCI 20000
-Acquisition of and real-time interaction with electrophysiological signals can be accomplished with many different bio-signal acquisition devices. The [BCI2000]([BCI2000]) general-purpose software platform provides an open-source solution to abstracting a wide range of bio-signal acquisition devices, synchronizing their signals to a variety of other devices that capture behavior (e.g., eye-trackers, data-gloves, etc.), and closed-loop experiments. BCI2000’s large high-quality code base is documented by a comprehensive set of technical references that is available as a [wiki](http://doc.bci2000.org).
+Acquisition of and real-time interaction with electrophysiological signals can be accomplished with many different bio-signal acquisition devices. The [BCI2000][BCI2000] general-purpose software platform provides an open-source solution to abstracting a wide range of bio-signal acquisition devices, synchronizing their signals to a variety of other devices that capture behavior (e.g., eye-trackers, data-gloves, etc.), and closed-loop experiments. BCI2000’s large high-quality code base is documented by a comprehensive set of technical references that is available as a [wiki](http://doc.bci2000.org).
 
 # BIDS
-The Brain Imaging Data Structure ([BIDS]([bids]) specifies a standard folder structure for many different electrophysiological signals, such as EEG, MEG and intracranial EEG, imaging data and is rapidly growing with ongoing proposals to extend BIDS. Metadata are both human- and machine-readable and their fields are prescribed to allow for automated processing.
+The Brain Imaging Data Structure ([BIDS][bids] specifies a standard folder structure for many different electrophysiological signals, such as EEG, MEG and intracranial EEG, imaging data and is rapidly growing with ongoing proposals to extend BIDS. Metadata are both human- and machine-readable and their fields are prescribed to allow for automated processing.
 
 # Dependencies
 In order to read and write BIDS metadata files (.json and .tsv) you need some packages highlighted below.

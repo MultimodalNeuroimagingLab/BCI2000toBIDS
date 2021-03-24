@@ -35,3 +35,12 @@ Required JSON package
 Pandas is already included in Anaconda, but use the link below if you just want the data analysis library.
 
 	Install Link: https://pandas.pydata.org/
+
+
+## Example BCI2000 data
+
+Here are a few example BCI2000 dataset to develop and test the conversion:
+
+https://www.dropbox.com/s/5cj4jgl2y8heddv/Left_Right_Screening.zip?dl=0
+https://www.dropbox.com/s/92hrkh2or0n6nl3/P300_Speller.zip?dl=0
+https://www.dropbox.com/s/1jkgc0ddbwcf67d/React_Task.zip?dl=0

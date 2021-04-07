@@ -26,6 +26,9 @@ Required JSON package
 
 
 ## Python
+
+***Python reader for BCI2000 data:*** https://github.com/neurotechcenter/BCI2kReader
+
 ***Information***: https://www.python.org/ (Both Python 2 and 3 will work for BIDS)
 
 **Anaconda** Recommended package to use for installing Python

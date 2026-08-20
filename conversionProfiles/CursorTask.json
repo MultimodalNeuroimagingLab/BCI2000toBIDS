@@ -1,0 +1,75 @@
+{
+  "profileName": "CursorTask",
+  "profileVersion": "0.1.0",
+  "description": "Optional extension profile for BCI2000 CursorTask recordings. Adds selected presentation-related states as auxiliary signals and events.",
+  "activation": {
+    "source": "parameter",
+    "path": "ApplicationFilterChain",
+    "equals": "CursorFeedbackTask"
+  },
+  "states": [
+    {
+      "name": "TargetCode",
+      "source": "state",
+      "path": "TargetCode",
+      "includeAsAuxiliarySignal": true,
+      "includeInEvents": false,
+      "decoder": "none",
+      "units": "n/a"
+    },
+    {
+      "name": "ResultCode",
+      "source": "state",
+      "path": "ResultCode",
+      "includeAsAuxiliarySignal": true,
+      "includeInEvents": false,
+      "decoder": "none",
+      "units": "n/a"
+    },
+    {
+      "name": "Feedback",
+      "source": "state",
+      "path": "Feedback",
+      "includeAsAuxiliarySignal": true,
+      "includeInEvents": true,
+      "decoder": "stateIntervals",
+      "units": "n/a"
+    },
+    {
+      "name": "PauseApplication",
+      "source": "state",
+      "path": "PauseApplication",
+      "includeAsAuxiliarySignal": true,
+      "includeInEvents": false,
+      "decoder": "none",
+      "units": "n/a"
+    },
+    {
+      "name": "CursorPosX",
+      "source": "state",
+      "path": "CursorPosX",
+      "includeAsAuxiliarySignal": true,
+      "includeInEvents": false,
+      "decoder": "stateIntervals",
+      "units": "n/a"
+    },    
+    {
+      "name": "CursorPosY",
+      "source": "state",
+      "path": "CursorPosY",
+      "includeAsAuxiliarySignal": true,
+      "includeInEvents": false,
+      "decoder": "stateIntervals",
+      "units": "n/a"
+    },
+    {
+      "name": "CursorPosZ",
+      "source": "state",
+      "path": "CursorPosZ",
+      "includeAsAuxiliarySignal": true,
+      "includeInEvents": false,
+      "decoder": "stateIntervals",
+      "units": "n/a"
+    }
+  ]
+}

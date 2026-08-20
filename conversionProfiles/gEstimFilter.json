@@ -1,0 +1,90 @@
+{
+  "profileName": "gEstimFilter",
+  "profileVersion": "0.2.0",
+  "description": "Optional BCI2000 gEstimFilter extension profile for the g.tec g.Estim PRO. Activated when ActivateEstim equals 1.",
+  "activation": {
+    "source": "parameter",
+    "path": "ActivateEstim",
+    "equals": 1
+  },
+  "stimulation": {
+    "enabled": true,
+    "mode": "parameterSet",
+    "eventState": "EstimStimulus",
+    "triggerState": "StimulusCode",
+    "parameterPaths": [
+      "DeviceMode",
+      "UseStimulusPresentation",
+      "UseMultipleConfigurations",
+      "DynamicStimulation",
+      "DoSelfTest",
+      "QuietStimulation",
+      "EnableExternalTrigger",
+      "StimulationConfigurations",
+      "StimulationExpression",
+      "AbortExpression",
+      "Modularity",
+      "Polarity",
+      "PhaseDuration",
+      "InterphaseDuration",
+      "Magnitude",
+      "NumberOfPulses",
+      "PulseFrequency",
+      "NumberOfTrains",
+      "FrequencyOfTrains",
+      "Jitter",
+      "ElectrodeType",
+      "CircleDiameter",
+      "ContactDiameter",
+      "ContactLength",
+      "ExposedSurfaceArea"
+    ]
+  },
+  "states": [
+    {
+      "name": "EstimSU",
+      "source": "state",
+      "path": "EstimSU",
+      "includeAsAuxiliarySignal": true,
+      "includeInEvents": false,
+      "decoder": "none",
+      "units": "n/a"
+    },
+    {
+      "name": "EstimStimulus",
+      "source": "state",
+      "path": "EstimStimulus",
+      "includeAsAuxiliarySignal": true,
+      "includeInEvents": false,
+      "decoder": "none",
+      "units": "n/a"
+    },
+    {
+      "name": "EstimCurrent",
+      "source": "state",
+      "path": "EstimCurrent",
+      "includeAsAuxiliarySignal": true,
+      "includeInEvents": false,
+      "decoder": "none",
+      "units": "uA"
+    },
+    {
+      "name": "EstimVoltage",
+      "source": "state",
+      "path": "EstimVoltage",
+      "includeAsAuxiliarySignal": true,
+      "includeInEvents": false,
+      "decoder": "none",
+      "units": "mV"
+    },
+    {
+      "name": "EstimImpedance",
+      "source": "state",
+      "path": "EstimImpedance",
+      "includeAsAuxiliarySignal": true,
+      "includeInEvents": false,
+      "decoder": "none",
+      "units": "Ohm"
+    }
+  ]
+}

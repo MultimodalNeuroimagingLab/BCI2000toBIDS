@@ -1,0 +1,57 @@
+{
+  "profileName": "StimulusPresentationTask",
+  "profileVersion": "0.1.0",
+  "description": "Optional extension profile for recordings containing BCI2000 stimulus presentation task.",
+  "activation": {
+    "source": "parameter",
+    "path": "SignalProcessingFilterChain",
+    "equals": "Normalizer"
+  },
+  "states": [
+    {
+      "name": "NormalizerOutput0",
+      "source": "state",
+      "path": "SGNL_NormalizerOutput_0",
+      "includeAsAuxiliarySignal": true,
+      "includeInEvents": false,
+      "transform": "typecastSingle",
+      "units": "a.u."
+    },
+    {
+      "name": "NormalizerOutput1",
+      "source": "state",
+      "path": "SGNL_NormalizerOutput_1",
+      "includeAsAuxiliarySignal": true,
+      "includeInEvents": false,
+      "transform": "typecastSingle",
+      "units": "a.u."
+    },
+    {
+      "name": "NormalizerOutput2",
+      "source": "state",
+      "path": "SGNL_NormalizerOutput_2",
+      "includeAsAuxiliarySignal": true,
+      "includeInEvents": false,
+      "transform": "typecastSingle",
+      "units": "a.u."
+    },
+    {
+      "name": "NormalizerOutput3",
+      "source": "state",
+      "path": "SGNL_NormalizerOutput_3",
+      "includeAsAuxiliarySignal": true,
+      "includeInEvents": false,
+      "transform": "typecastSingle",
+      "units": "a.u."
+    },
+    {
+      "name": "NormalizerOutput4",
+      "source": "state",
+      "path": "SGNL_NormalizerOutput_4",
+      "includeAsAuxiliarySignal": true,
+      "includeInEvents": false,
+      "transform": "typecastSingle",
+      "units": "a.u."
+    }
+  ]
+}

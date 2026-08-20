@@ -1,0 +1,57 @@
+{
+  "profileName": "StimulusPresentationTask",
+  "profileVersion": "0.1.1",
+  "description": "Optional extension profile for BCI2000 StimulusPresentationTask recordings. Adds selected presentation-related states as auxiliary signals and events.",
+  "activation": {
+    "source": "parameter",
+    "path": "ApplicationFilterChain",
+    "equals": "StimulusPresentationTask"
+  },
+  "states": [
+    {
+      "name": "PresentationRequested",
+      "source": "state",
+      "path": "PresentationRequested",
+      "includeAsAuxiliarySignal": true,
+      "includeInEvents": false,
+      "decoder": "none",
+      "units": "n/a"
+    },
+    {
+      "name": "PresentationDisplayed",
+      "source": "state",
+      "path": "PresentationDisplayed",
+      "includeAsAuxiliarySignal": true,
+      "includeInEvents": false,
+      "decoder": "none",
+      "units": "n/a"
+    },
+    {
+      "name": "StimulusCode",
+      "source": "state",
+      "path": "StimulusCode",
+      "includeAsAuxiliarySignal": true,
+      "includeInEvents": true,
+      "decoder": "stateIntervals",
+      "units": "n/a"
+    },
+    {
+      "name": "StimulusBegin",
+      "source": "state",
+      "path": "StimulusBegin",
+      "includeAsAuxiliarySignal": true,
+      "includeInEvents": false,
+      "decoder": "none",
+      "units": "n/a"
+    },
+    {
+      "name": "PhaseInSequence",
+      "source": "state",
+      "path": "PhaseInSequence",
+      "includeAsAuxiliarySignal": true,
+      "includeInEvents": true,
+      "decoder": "stateIntervals",
+      "units": "n/a"
+    }
+  ]
+}

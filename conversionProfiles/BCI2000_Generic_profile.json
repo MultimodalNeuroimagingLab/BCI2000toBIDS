@@ -1,0 +1,90 @@
+{
+  "profileName": "BCI2000_Generic",
+  "profileVersion": "0.4.0",
+  "description": "Generic base conversion profile for BCI2000 DAT recordings. Contains device-agnostic metadata mappings and exports all BCI2000 states as auxiliary signals without converting them to events.",
+  "modality": "n/a",
+  "metadata": {
+    "Device": {
+      "SourceModule": {
+        "source": "parameter",
+        "path": "SourceModule",
+        "aliases": [
+          "Source.SourceModule"
+        ],
+        "default": "n/a",
+        "transform": "toString"
+      }
+    },
+    "Recording": {
+      "StartTime": {
+        "source": "parameter",
+        "path": "StorageTime",
+        "aliases": [
+          "Source.StorageTime"
+        ],
+        "required": true,
+        "transform": "Datetime"
+      },
+      "SamplingFrequency": {
+        "source": "parameter",
+        "path": "SamplingRate",
+        "aliases": [
+          "Source.SamplingRate"
+        ],
+        "required": true,
+        "transform": "parseNumeric"
+      },
+      "ChannelCount": {
+        "source": "parameter",
+        "path": "SourceCh",
+        "aliases": [
+          "Source.SourceCh"
+        ],
+        "required": true,
+        "transform": "parseNumeric"
+      },
+      "ChannelType": {
+        "source": "constant",
+        "value": "n/a"
+      },
+      "ChannelUnits": {
+        "source": "constant",
+        "value": "uV"
+      },
+      "Reference": {
+        "source": "parameter",
+        "path": "ReferenceChannel",
+        "aliases": [
+          "ReferenceChannels",
+          "RecordingReference",
+          "Source.ReferenceChannel"
+        ],
+        "default": "n/a",
+        "transform": "toString"
+      },
+      "PowerLineFrequency": {
+        "source": "parameter",
+        "path": "PowerLineFrequency",
+        "aliases": [
+          "LineFrequency"
+        ],
+        "default": 60,
+        "transform": "parseNumeric"
+      }
+    },
+    "Provenance": {
+      "SourceFormat": {
+        "source": "constant",
+        "value": "BCI2000 DAT"
+      },
+      "ConversionProfile": {
+        "source": "constant",
+        "value": "BCI2000_Generic-0.4.0"
+      }
+    }
+  },
+  "events": "all",
+  "stimulation": {
+    "enabled": false
+  }
+}

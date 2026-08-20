@@ -1,0 +1,119 @@
+{
+  "profileName": "CorTecBIC_FunctionalData",
+  "profileVersion": "0.3.2",
+  "description": "Conversion profile for CorTec BIC recordings acquired through BCI2000, including lost-sample preprocessing and optional Xsens and stimulus-presentation extensions.",
+  "modality": "iEEG",
+  "metadata": {
+    "Device": {
+      "Manufacturer": {
+        "source": "constant",
+        "value": "CorTec"
+      },
+      "Model": {
+        "source": "constant",
+        "value": "Brain Interchange"
+      },
+      "SourceModule": {
+        "source": "parameter",
+        "path": "SourceModule",
+        "aliases": [
+          "Source.SourceModule"
+        ],
+        "default": "CorTecADC",
+        "transform": "toString"
+      }
+    },
+    "Recording": {
+      "StartTime": {
+        "source": "parameter",
+        "path": "StorageTime",
+        "aliases": [
+          "Source.StorageTime"
+        ],
+        "required": true,
+        "transform": "Datetime"
+      },
+      "SamplingFrequency": {
+        "source": "parameter",
+        "path": "SamplingRate",
+        "aliases": [
+          "Source.SamplingRate"
+        ],
+        "required": true,
+        "transform": "parseNumeric"
+      },
+      "ChannelCount": {
+        "source": "parameter",
+        "path": "SourceCh",
+        "aliases": [
+          "Source.SourceCh"
+        ],
+        "required": true,
+        "transform": "parseNumeric"
+      },
+      "ChannelType": {
+        "source": "constant",
+        "value": "ECOG"
+      },
+      "ChannelUnits": {
+        "source": "constant",
+        "value": "uV"
+      },
+      "Reference": {
+        "source": "parameter",
+        "path": "ReferenceChannel",
+        "aliases": [
+          "ReferenceChannels",
+          "RecordingReference",
+          "Source.ReferenceChannel"
+        ],
+        "default": "n/a",
+        "transform": "toString"
+      },
+      "PowerLineFrequency": {
+        "source": "parameter",
+        "path": "PowerLineFrequency",
+        "aliases": [
+          "LineFrequency"
+        ],
+        "default": 60,
+        "transform": "parseNumeric"
+      }
+    },
+    "Provenance": {
+      "SourceFormat": {
+        "source": "constant",
+        "value": "BCI2000 DAT"
+      },
+      "ConversionProfile": {
+        "source": "constant",
+        "value": "CorTecBIC_FunctionalData-0.3.2"
+      }
+    }
+  },
+  "events": [
+    {
+      "name": "ImplantLostSample",
+      "source": "state",
+      "path": "ImplantLostSample",
+      "includeAsAuxiliarySignal": true,
+      "includeInEvents": false,
+      "decoder": "stateIntervals",
+      "units": "n/a"
+    }
+  ],
+  "preprocessing": [
+    {
+      "function": "maskStateSamples",
+      "state": "ImplantLostSample",
+      "condition": "nonzero",
+      "target": "signal",
+      "replacement": "NaN"
+    }
+  ],
+  "extensions": [
+    {
+      "profile": "CursorTask.json"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "profileName": "XsensMTwLogger",
+  "profileVersion": "0.1.0",
+  "description": "Optional BCI2000 Xsens MTw Logger extension profile. Activated only when LogXsensMTw equals 1. Adds MTw1 rotational states as auxiliary channels and converts stored 32-bit state values back to degrees.",
+  "activation": {
+    "source": "parameter",
+    "path": "LogXsensMTw",
+    "equals": 1
+  },
+  "states": [
+    {
+      "name": "MTw1X",
+      "source": "state",
+      "path": "MTw1X",
+      "includeAsAuxiliarySignal": true,
+      "includeInEvents": false,
+      "transform": "XsensMTwDegrees",
+      "prescalerParameter": "DataPrescaler",
+      "units": "degrees"
+    },
+    {
+      "name": "MTw1Y",
+      "source": "state",
+      "path": "MTw1Y",
+      "includeAsAuxiliarySignal": true,
+      "includeInEvents": false,
+      "transform": "XsensMTwDegrees",
+      "prescalerParameter": "DataPrescaler",
+      "units": "degrees"
+    },
+    {
+      "name": "MTw1Z",
+      "source": "state",
+      "path": "MTw1Z",
+      "includeAsAuxiliarySignal": true,
+      "includeInEvents": false,
+      "transform": "XsensMTwDegrees",
+      "prescalerParameter": "DataPrescaler",
+      "units": "degrees"
+    }
+  ]
+}

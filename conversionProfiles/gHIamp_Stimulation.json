@@ -1,0 +1,170 @@
+{
+  "profileName": "gHIamp_Stimulation",
+  "profileVersion": "0.2.0",
+  "description": "Stimulation-data conversion profile for gHIamp recordings acquired through BCI2000. Uses StimulusPresentationTask for task events and gEstimFilter for electrical stimulation states and parameters.",
+  "modality": "iEEG",
+  "metadata": {
+    "Device": {
+      "Manufacturer": {
+        "source": "constant",
+        "value": "gTec"
+      },
+      "Model": {
+        "source": "constant",
+        "value": "gHIamp"
+      },
+      "SourceModule": {
+        "source": "parameter",
+        "path": "SignalSourceFilterChain",
+        "valueIndex": [
+          2,
+          1
+        ],
+        "aliases": [
+          "SourceModule"
+        ],
+        "default": "gHIampADC",
+        "transform": "toString"
+      }
+    },
+    "Recording": {
+      "StartTime": {
+        "source": "parameter",
+        "path": "StorageTime",
+        "aliases": [
+          "Source.StorageTime"
+        ],
+        "required": true,
+        "transform": "Datetime"
+      },
+      "SamplingFrequency": {
+        "source": "parameter",
+        "path": "SamplingRate",
+        "aliases": [
+          "Source.SamplingRate"
+        ],
+        "required": true,
+        "transform": "parseNumeric"
+      },
+      "ChannelCount": {
+        "source": "parameter",
+        "path": "SourceCh",
+        "aliases": [
+          "Source.SourceCh"
+        ],
+        "required": true,
+        "transform": "parseNumeric"
+      },
+      "ChannelType": {
+        "source": "constant",
+        "value": "ECOG"
+      },
+      "ChannelUnits": {
+        "source": "parameter",
+        "path": "SourceChGain",
+        "required": true,
+        "transform": "extractUnitsFromGain"
+      },
+      "Reference": {
+        "source": "parameter",
+        "path": "RefChList",
+        "default": "n/a",
+        "transform": "joinStrings"
+      },
+      "PowerLineFrequency": {
+        "source": "parameter",
+        "path": "PowerLineFrequency",
+        "aliases": [
+          "LineFrequency"
+        ],
+        "default": 60,
+        "transform": "parseNumeric"
+      },
+      "HardwareFilters": {
+        "BandPassFilter": {
+          "Enabled": {
+            "source": "parameter",
+            "path": "FilterEnabled",
+            "transform": "parseNumeric"
+          },
+          "HighPassCutoffHz": {
+            "source": "parameter",
+            "path": "FilterHighPass",
+            "transform": "parseNumeric"
+          },
+          "LowPassCutoffHz": {
+            "source": "parameter",
+            "path": "FilterLowPass",
+            "transform": "parseNumeric"
+          },
+          "ModelOrder": {
+            "source": "parameter",
+            "path": "FilterModelOrder",
+            "transform": "parseNumeric"
+          },
+          "FilterTypeCode": {
+            "source": "parameter",
+            "path": "FilterType",
+            "transform": "parseNumeric"
+          }
+        },
+        "NotchFilter": {
+          "Enabled": {
+            "source": "parameter",
+            "path": "NotchEnabled",
+            "transform": "parseNumeric"
+          },
+          "HighPassCutoffHz": {
+            "source": "parameter",
+            "path": "NotchHighPass",
+            "transform": "parseNumeric"
+          },
+          "LowPassCutoffHz": {
+            "source": "parameter",
+            "path": "NotchLowPass",
+            "transform": "parseNumeric"
+          },
+          "ModelOrder": {
+            "source": "parameter",
+            "path": "NotchModelOrder",
+            "transform": "parseNumeric"
+          },
+          "FilterTypeCode": {
+            "source": "parameter",
+            "path": "NotchType",
+            "transform": "parseNumeric"
+          }
+        }
+      }
+    },
+    "Provenance": {
+      "SourceFormat": {
+        "source": "constant",
+        "value": "BCI2000 DAT"
+      },
+      "ConversionProfile": {
+        "source": "constant",
+        "value": "gHIamp_Stimulation-0.2.0"
+      }
+    }
+  },
+  "events": [
+    {
+      "name": "DigitalInput1",
+      "source": "state",
+      "path": "DigitalInput1",
+      "includeAsAuxiliarySignal": true,
+      "includeInEvents": false,
+      "decoder": "none",
+      "units": "n/a"
+    }
+  ],
+  "extensions": [
+    {
+      "profile": "StimulusPresentationTask.json"
+    },
+    {
+      "profile": "gEstimFilter.json"
+    }
+  ]
+}

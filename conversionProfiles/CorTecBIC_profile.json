@@ -1,0 +1,178 @@
+{
+  "profileName": "CorTecBIC",
+  "profileVersion": "0.4.0",
+  "description": "Conversion profile for CorTec BIC recordings acquired through BCI2000, including profile-driven electrical stimulation metadata.",
+  "modality": "iEEG",
+  "metadata": {
+    "Device": {
+      "Manufacturer": {
+        "source": "constant",
+        "value": "CorTec"
+      },
+      "Model": {
+        "source": "constant",
+        "value": "Brain Interchange"
+      },
+      "SourceModule": {
+        "source": "parameter",
+        "path": "SourceModule",
+        "aliases": [
+          "Source.SourceModule"
+        ],
+        "default": "CorTecADC",
+        "transform": "toString"
+      }
+    },
+    "Recording": {
+      "StartTime": {
+        "source": "parameter",
+        "path": "StorageTime",
+        "aliases": [
+          "Source.StorageTime"
+        ],
+        "required": true,
+        "transform": "Datetime"
+      },
+      "SamplingFrequency": {
+        "source": "parameter",
+        "path": "SamplingRate",
+        "aliases": [
+          "Source.SamplingRate"
+        ],
+        "required": true,
+        "transform": "parseNumeric"
+      },
+      "ChannelCount": {
+        "source": "parameter",
+        "path": "SourceCh",
+        "aliases": [
+          "Source.SourceCh"
+        ],
+        "required": true,
+        "transform": "parseNumeric"
+      },
+      "ChannelType": {
+        "source": "constant",
+        "value": "ECOG"
+      },
+      "ChannelUnits": {
+        "source": "constant",
+        "value": "uV"
+      },
+      "Reference": {
+        "source": "parameter",
+        "path": "ReferenceChannel",
+        "aliases": [
+          "ReferenceChannels",
+          "RecordingReference",
+          "Source.ReferenceChannel"
+        ],
+        "default": "n/a",
+        "transform": "toString"
+      },
+      "PowerLineFrequency": {
+        "source": "parameter",
+        "path": "PowerLineFrequency",
+        "aliases": [
+          "LineFrequency"
+        ],
+        "default": 60,
+        "transform": "parseNumeric"
+      }
+    },
+    "Provenance": {
+      "SourceFormat": {
+        "source": "constant",
+        "value": "BCI2000 DAT"
+      },
+      "ConversionProfile": {
+        "source": "constant",
+        "value": "CorTecBIC-0.4.0"
+      }
+    }
+  },
+  "events": [
+    {
+      "name": "ImplantStimulation",
+      "source": "state",
+      "path": "ImplantStimulation",
+      "includeAsAuxiliarySignal": true,
+      "includeInEvents": false,
+      "decoder": "none"
+    },
+    {
+      "name": "RequestedStimulation",
+      "source": "state",
+      "path": "RequestedStimulation",
+      "includeAsAuxiliarySignal": true,
+      "includeInEvents": false,
+      "decoder": "none"
+    },
+    {
+      "name": "ImplantLostSample",
+      "source": "state",
+      "path": "ImplantLostSample",
+      "includeAsAuxiliarySignal": true,
+      "includeInEvents": false,
+      "decoder": "none"
+    },
+    {
+      "name": "ImplantTemperature",
+      "source": "state",
+      "path": "ImplantTemperature",
+      "includeAsAuxiliarySignal": true,
+      "includeInEvents": false,
+      "decoder": "none"
+    },
+    {
+      "name": "ImplantVoltage",
+      "source": "state",
+      "path": "ImplantVoltage",
+      "includeAsAuxiliarySignal": true,
+      "includeInEvents": false,
+      "decoder": "none"
+    },
+    {
+      "name": "ImplantHumidity",
+      "source": "state",
+      "path": "ImplantHumidity",
+      "includeAsAuxiliarySignal": true,
+      "includeInEvents": false,
+      "decoder": "none"
+    },
+    {
+      "name": "ImplantControlValue",
+      "source": "state",
+      "path": "ImplantControlValue",
+      "includeAsAuxiliarySignal": true,
+      "includeInEvents": false,
+      "decoder": "none"
+    },
+    {
+      "name": "ImplantPrimaryCoilCurrent",
+      "source": "state",
+      "path": "ImplantPrimaryCoilCurrent",
+      "includeAsAuxiliarySignal": true,
+      "includeInEvents": false,
+      "decoder": "none"
+    }
+  ],
+  "preprocessing": [
+    {
+      "function": "maskStateSamples",
+      "state": "ImplantLostSample",
+      "condition": "nonzero",
+      "target": "signal",
+      "replacement": "NaN"
+    }
+  ],
+  "stimulation": {
+    "enabled": true,
+    "eventState": "ImplantStimulation",
+    "triggerState": "StimulusCode",
+    "parametersPath": "parameters.StimulationPulses",
+    "triggersPath": "parameters.StimulationTriggers",
+    "triggerRow": 1,
+    "functionIDsRow": 2
+  }
+}
